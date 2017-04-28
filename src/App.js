@@ -1,33 +1,43 @@
 import React from 'react'
 
-import './button.css'
-
-var LikeButton = React.createClass({
-  getInitialState: function() {
-    return {
-      likescount: 0,
-      grammarlikes: 'likes'
-    }
+var styles= {
+  main: {
+  margin: 'auto',
+  marginLeft:'50%',
+  marginTop:'25%'
   },
-
-  handleClick: function() {
-    this.setState({
-      likescount: this.state.likescount + 1,
-      grammarlikes: this.state.likescount === 0 ? 'like' : 'likes'
-    })
-  },
-
-  render: function () {
-    // var likes = "likes" 
-    // if (this.state.likescount === 1) {
-    //   likes = "like"
-    // }
-    return (
-      <div className='page' >
-        <button className="button" onClick={this.handleClick}>{this.state.likescount} {this.state.grammarlikes}</button>
-      </div>
-    )
+  button: {
+    backgroundColor: 'pink',
+    color: 'white',
+    height: '50px',
+    width: '100px',
+    lineHeight: '50px',
+    fontSize: '24px',
+    textAlign: 'center',
+    border: 'pink'
   }
-})
+}
 
-export default LikeButton
+export default React.createClass({
+    getInitialState: function () {
+      return {
+        count: 0,
+      }
+    },
+    handleClick: function () {
+      this.setState({
+        count: this.state.count + 1,
+      })
+    },
+    render: function () {
+      var likes = "Likes"
+      if(this.state.count === 1){
+        likes = "Like"
+      }
+      return (
+          <div style={styles.main}>
+            <button style={styles.button} onClick={this.handleClick}>{this.state.count} {likes}</button>
+          </div>
+        )
+    }
+})
